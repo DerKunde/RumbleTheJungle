@@ -12,25 +12,24 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            //Move Left
             MoveUp();
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            //Move Right
             MoveLeft();
+            this.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            //Move Up
             MoveDown();
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            //MoveDown
+            this.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
             MoveRight();
         }
     }
