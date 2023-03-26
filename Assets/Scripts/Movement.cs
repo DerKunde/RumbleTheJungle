@@ -2,56 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System;
+using static UnityEngine.InputSystem.InputAction;
 
+[RequireComponent(typeof(Avatar))]
 public class Movement : MonoBehaviour
 {
-    public float movementSpeed = 0.0009f;
+    [SerializeField] private float _movementSpeed = 10;
 
-    // Update is called once per frame
-    void Update()
+    private InputActions inputActions;
+    private Avatar _avatar;
+
+    private void Awake()
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            MoveUp();
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            MoveLeft();
-            this.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
-
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            MoveDown();
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            this.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
-            MoveRight();
-        }
+        inputActions = new InputActions();
+        _avatar = GetComponent<Avatar>();
     }
 
-    private void MoveUp()
+    private void Update()
     {
-        this.transform.position += new Vector3(0, 0, movementSpeed);
+        Vector3 move = inputActions.Player.Movement.ReadValue<Vector3>().normalized * _movementSpeed * Time.deltaTime;
+        _avatar.Flip(move.x > 0);
+        transform.Translate(move);
     }
 
-    private void MoveDown()
+    private void OnEnable()
     {
-        this.transform.position += new Vector3(0, 0, -movementSpeed);
+        inputActions.Enable();
     }
 
-    private void MoveLeft()
+    private void OnDisable()
     {
-        this.transform.position += new Vector3(-movementSpeed, 0, 0);
+        inputActions.Disable();
     }
-
-    private void MoveRight()
-    {
-        this.transform.position += new Vector3(movementSpeed, 0, 0);
-    }
-    
 }
