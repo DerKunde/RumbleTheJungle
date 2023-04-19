@@ -10,37 +10,8 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] private float _movementSpeed = 10;
 
-<<<<<<< HEAD
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.W))
-        {
-            MoveUp();
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            MoveLeft();
-            this.transform.rotation = Quaternion.Euler(new Vector3(30f, 0f, 0f));
-
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            MoveDown();
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            this.transform.rotation = Quaternion.Euler(new Vector3(-30f, 180f, 0f));
-            MoveRight();
-        }
-    }
-=======
     private InputActions inputActions;
     private Avatar _avatar;
->>>>>>> origin/AlternativeMovement
 
     private void Awake()
     {
@@ -51,6 +22,7 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         Vector3 move = inputActions.Player.Movement.ReadValue<Vector3>().normalized * _movementSpeed * Time.deltaTime;
+        Debug.Log(move);
         _avatar.Flip(move.x > 0);
         transform.Translate(move);
     }
