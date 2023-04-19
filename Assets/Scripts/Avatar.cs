@@ -3,23 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class Avatar : MonoBehaviour
 {
-    
+    private SpriteRenderer _renderer;
+
     private void Awake()
     {
-
+        _renderer = GetComponent<SpriteRenderer>();
     }
-
-    // Start is called before the first frame update
-    void Start()
+    public void Flip(bool hastToFlip)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _renderer.flipX = hastToFlip;
     }
 }

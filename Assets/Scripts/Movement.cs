@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System;
+using static UnityEngine.InputSystem.InputAction;
 
+[RequireComponent(typeof(Avatar))]
 public class Movement : MonoBehaviour
 {
-    public float movementSpeed = 0.0009f;
+    [SerializeField] private float _movementSpeed = 10;
 
+<<<<<<< HEAD
     // Update is called once per frame
     void Update()
     {
@@ -33,25 +37,31 @@ public class Movement : MonoBehaviour
             MoveRight();
         }
     }
+=======
+    private InputActions inputActions;
+    private Avatar _avatar;
+>>>>>>> origin/AlternativeMovement
 
-    private void MoveUp()
+    private void Awake()
     {
-        this.transform.position += new Vector3(0, 0, movementSpeed);
+        inputActions = new InputActions();
+        _avatar = GetComponent<Avatar>();
     }
 
-    private void MoveDown()
+    private void Update()
     {
-        this.transform.position += new Vector3(0, 0, -movementSpeed);
+        Vector3 move = inputActions.Player.Movement.ReadValue<Vector3>().normalized * _movementSpeed * Time.deltaTime;
+        _avatar.Flip(move.x > 0);
+        transform.Translate(move);
     }
 
-    private void MoveLeft()
+    private void OnEnable()
     {
-        this.transform.position += new Vector3(-movementSpeed, 0, 0);
+        inputActions.Enable();
     }
 
-    private void MoveRight()
+    private void OnDisable()
     {
-        this.transform.position += new Vector3(movementSpeed, 0, 0);
+        inputActions.Disable();
     }
-    
 }
