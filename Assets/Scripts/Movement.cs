@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             MoveLeft();
-            this.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+            this.transform.rotation = Quaternion.Euler(new Vector3(30f, 0f, 0f));
 
         }
 
@@ -29,7 +29,7 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
         {
-            this.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
+            this.transform.rotation = Quaternion.Euler(new Vector3(-30f, 180f, 0f));
             MoveRight();
         }
     }

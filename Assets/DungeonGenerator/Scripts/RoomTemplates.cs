@@ -8,7 +8,4 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] eastDoorRooms;
     public GameObject[] westDoorRooms;
     public GameObject[] southDoorRooms;
-    
-    
-    
 }

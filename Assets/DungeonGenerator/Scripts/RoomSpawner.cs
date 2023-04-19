@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,10 +21,18 @@ public class RoomSpawner : MonoBehaviour
 
     public DoorDirections doorDirection;
 
+    private void Awake()
+    {
+        templates = GameObject.FindGameObjectWithTag("RoomTemplates").GetComponent<RoomTemplates>();
+    }
+
     void Start()
     {
         templates = GameObject.FindGameObjectWithTag("RoomTemplates").GetComponent<RoomTemplates>();
-        Invoke("Spawn", 0.3f);
+        if (DungeonGenManager.Instance.enableRoomSpawning)
+        {
+            Invoke("Spawn", 0.1f);   
+        }
     }
     
     private void Spawn()
@@ -58,11 +68,40 @@ public class RoomSpawner : MonoBehaviour
         }
     }
 
+    public void SpawnOneWayRoom()
+    {
+        Debug.Log("OneWayRoom");
+        if (doorDirection == DoorDirections.north)
+        {
+            Instantiate(templates.northDoorRooms[0], transform.position,
+                templates.northDoorRooms[0].transform.rotation);
+        }
+        else if (doorDirection == DoorDirections.east)
+        {
+            Instantiate(templates.eastDoorRooms[0], transform.position,
+                templates.eastDoorRooms[0].transform.rotation);
+        }
+        else if (doorDirection == DoorDirections.south)
+        {
+            Instantiate(templates.southDoorRooms[0], transform.position,
+                templates.southDoorRooms[0].transform.rotation);
+        }
+        else if (doorDirection == DoorDirections.west)
+        {
+            Instantiate(templates.westDoorRooms[0], transform.position,
+                templates.westDoorRooms[0].transform.rotation);
+        }
+
+        spawned = true;
+    }
+    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("RoomSpawnPoint"))
         {
             Debug.Log("Room spawn point deleted!");
+            GetComponentInParent<Room>().roomSpawners.Remove(this);
             Destroy(gameObject);
         }
     }
