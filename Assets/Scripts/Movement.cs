@@ -22,9 +22,9 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         Vector3 move = inputActions.Player.Movement.ReadValue<Vector3>().normalized * _movementSpeed * Time.deltaTime;
-        Debug.Log(move);
+        // Debug.Log(move);
         _avatar.Flip(move.x > 0);
-        transform.Translate(move);
+        transform.Translate(move.x, move.y, move.z, Space.World);
     }
 
     private void OnEnable()
