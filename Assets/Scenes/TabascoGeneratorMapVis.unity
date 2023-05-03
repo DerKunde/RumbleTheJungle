@@ -217,7 +217,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &250412398
+--- !u!1 &496277792
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -225,109 +225,68 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 250412400}
-  - component: {fileID: 250412399}
+  - component: {fileID: 496277795}
+  - component: {fileID: 496277794}
+  - component: {fileID: 496277793}
   m_Layer: 0
-  m_Name: TabascoGenerator
+  m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &250412399
+--- !u!114 &496277793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250412398}
+  m_GameObject: {fileID: 496277792}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7815d4a522b3c142a5d44d9b2dc5ed6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5151718344bf0ad409cb4393fda7ae64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 10
-  height: 10
-  maxCorridorLength: 6
-  spawnedRooms: 0
-  gridParent: {fileID: 845672416}
-  gridCell: {fileID: 9004850266421277128, guid: b451e99a6b9e1fa48801bfb5f6106412, type: 3}
-  corridor: {fileID: 9004850266421277128, guid: 5c505304fa9421b45817f0458a85f4e5, type: 3}
-  boss: {fileID: 0}
-  startCell: {fileID: 9004850266421277128, guid: 6432c997b1fa7744ca471f6e9fcd9709, type: 3}
-  shrine: {fileID: 0}
---- !u!4 &250412400
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250412398}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.63039345, y: 4.7342234, z: 81.8239}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &845672415
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 845672416}
-  - component: {fileID: 845672417}
-  m_Layer: 0
-  m_Name: Grid
-  m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &845672416
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845672415}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &845672417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845672415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ba6b289cc47a0f4bb2deeaeb198b556, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridSize: 12
-  numberOfAltarRooms: 1
-  numberOfBossRooms: 1
-  numberOfExitRooms: 1
-  maxRangeAltar: 2
-  minRangeAltar: 1
+  gridParent: {fileID: 496277795}
+  _tabasco: {fileID: 496277794}
   emptyCellPrefab: {fileID: 4931203002846367586, guid: a04195d12de99df4b9cdb2724785cbb2, type: 3}
   startRoomPrefab: {fileID: 1474314366781550790, guid: c56f93c39d99c7c41b078bd2e65e05c1, type: 3}
   exitRoomPrefab: {fileID: 8153205507176515051, guid: 6cd6790bd4d97dc47878ea311226d35e, type: 3}
   corridorRoomPrefab: {fileID: 6895968020038706297, guid: fc28ad53f15270e4cae737b8f0b582de, type: 3}
   altarRoomPrefab: {fileID: 6269828911899856556, guid: a174fe103ca59b5438045db0de986b83, type: 3}
   bossRoomPrefab: {fileID: 6659984523812113994, guid: e4aef46b49ae0c649adf4931cface839, type: 3}
-  gridParent: {fileID: 845672416}
+--- !u!114 &496277794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496277792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ee08f2b4c7ce0a4f808d1f726e51df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 16
+  height: 16
+  numberOfAltars: 2
+  numberOfBosses: 1
+  numberOfExits: 1
+--- !u!4 &496277795
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496277792}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &924071277
 GameObject:
   m_ObjectHideFlags: 0

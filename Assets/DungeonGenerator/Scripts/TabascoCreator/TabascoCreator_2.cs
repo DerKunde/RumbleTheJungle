@@ -1,22 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using Random = System.Random;
 
-
-enum RoomTypes
-{
-    StartRoom = 1,
-    ExitRoom = 2,
-    Corridor = 3,
-    BossRoom = 4,
-    AltarRoom = 5,
-}
 
 public class TabascoCreator_2 : MonoBehaviour
 {
