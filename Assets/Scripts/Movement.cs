@@ -77,7 +77,7 @@ public class Movement : MonoBehaviour
     {
         Vector3 move = direction * _movementSpeed * Time.deltaTime * dashspeed;
         _avatar.Flip(move.x > 0);
-        transform.Translate(move);
+        transform.Translate(move, Space.World);
     }
     private void Moving()
     {
