@@ -3,17 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
 public class Avatar : MonoBehaviour
 {
-    private SpriteRenderer _renderer;
 
-    private void Awake()
-    {
-        _renderer = GetComponent<SpriteRenderer>();
-    }
+    [SerializeField] private SpriteRenderer _renderer;
+
     public void Flip(bool hastToFlip)
     {
         _renderer.flipX = hastToFlip;
+    }
+        public void FlipY(bool hastToFlip)
+    {
+        _renderer.flipY = hastToFlip;
     }
 }
