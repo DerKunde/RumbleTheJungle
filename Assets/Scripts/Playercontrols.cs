@@ -105,14 +105,21 @@ public class Playercontrols : MonoBehaviour
 
     public void OnLightAttack(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Light Attack was clicked");
-        animator.SetTrigger("Light Attack");
+        if(ctx.started)
+        {
+            Debug.Log("Light Attack was clicked");
+            animator.SetTrigger("Light Attack");
+        }
+
     }
 
     public void OnHeavyAttack(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Heavy Attack was clicked");
-        animator.SetTrigger("Heavy Attack");
+        if (ctx.started)
+        {
+            Debug.Log("Light Attack was clicked");
+            animator.SetTrigger("Heavy Attack");
+        }
     }
 
 
