@@ -31,7 +31,6 @@ public class Tabasco : MonoBehaviour
     private const int ALTAR_ROOM = 4;
     private const int BOSS_ROOM = 5;
 
-
     void Start()
     {
         markerList = new List<(int x, int y, int type)>();
@@ -97,7 +96,6 @@ public class Tabasco : MonoBehaviour
                     shortestPoint1 = pos1;
                     shortestPoint2 = pos2;
                 }
-                
             }
         }
 

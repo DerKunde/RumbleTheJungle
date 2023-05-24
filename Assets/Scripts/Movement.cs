@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System;
+using UnityEngine.AI;
 using static UnityEngine.InputSystem.InputAction;
 using UnityEngine.Events;
 
@@ -13,6 +14,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private bool useDashDistance;
     [Range(0, 10)]
     [SerializeField] private float dashDistance = 3f;
+
+    [SerializeField] private NavMeshAgent navAgent;
 
     private InputActions inputActions;
     private Avatar _avatar;
@@ -27,6 +30,7 @@ public class Movement : MonoBehaviour
     {
         inputActions = new InputActions();
         _avatar = GetComponent<Avatar>();
+        navAgent.updateRotation = false;
     }
 
     private void Update()
@@ -42,6 +46,7 @@ public class Movement : MonoBehaviour
         {
             StartCoroutine(Dash(inputActions.Player.Movement.ReadValue<Vector3>().normalized));
         }
+        this.transform.rotation  = Quaternion.Euler(new Vector3(30,0,0));
     }
 
     private IEnumerator Dash(Vector3 direction)
