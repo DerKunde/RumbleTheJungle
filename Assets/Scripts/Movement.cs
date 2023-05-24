@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 using System;
 using static UnityEngine.InputSystem.InputAction;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Avatar))]
 public class Movement : MonoBehaviour
@@ -13,15 +14,15 @@ public class Movement : MonoBehaviour
     [SerializeField] private bool useDashDistance;
     [Range(0, 10)]
     [SerializeField] private float dashDistance = 3f;
+    
 
     private InputActions inputActions;
     private Avatar _avatar;
     private bool canDash = true;
     private bool isDashing = false;
-    private float dashspeed = 1f;
     private float dashtime = 0.2f;
     private float dashCooldown = 1f;
-
+    private float dashspeed = 1f;
 
     private void Awake()
     {
@@ -37,8 +38,8 @@ public class Movement : MonoBehaviour
         }
 
         Moving();
-           
-        if(inputActions.Player.Dash.triggered && canDash)
+
+        if (inputActions.Player.Dash.triggered && canDash)
         {
             StartCoroutine(Dash(inputActions.Player.Movement.ReadValue<Vector3>().normalized));
         }
@@ -83,6 +84,11 @@ public class Movement : MonoBehaviour
     {
         Vector3 move = inputActions.Player.Movement.ReadValue<Vector3>().normalized;
         MoveTo(move);
+    }
+
+    public void OnMoving(InputAction.CallbackContext ctx)
+    {
+        Debug.Log($"Value: {ctx.ReadValue<Vector3>()}");
     }
 
     private void OnEnable()

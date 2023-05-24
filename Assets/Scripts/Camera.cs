@@ -20,7 +20,7 @@ public class Camera : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         CameraInstance.gameObject.transform.position = new Vector3(avatarPosition.gameObject.transform.position.x ,CameraInstance.gameObject.transform.position.y, avatarPosition.gameObject.transform.position.z - 5);
     }
