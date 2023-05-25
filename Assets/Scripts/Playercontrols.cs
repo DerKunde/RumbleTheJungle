@@ -14,6 +14,7 @@ public class Playercontrols : MonoBehaviour
     public float Movementspeed = 10;
     private bool _isFacingRight = true;
     private bool _isMoving = false;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     
     private Vector2 lastmoveinput;
     public float dashspeed = 40;
@@ -27,10 +28,11 @@ public class Playercontrols : MonoBehaviour
         } 
     }
     public bool IsFacingRight { get => _isFacingRight;
-        private set { 
-            if (_isFacingRight!=value)
-                transform.localScale *= new Vector2(-1, 1);
-            _isFacingRight = value;
+        private set
+        {
+            if (_isFacingRight != value)
+                spriteRenderer.flipX = value;
+                _isFacingRight = value;
         } 
     }
 

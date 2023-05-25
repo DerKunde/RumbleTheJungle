@@ -23,5 +23,6 @@ public class CameraMovement : MonoBehaviour
     {
         Vector3 desiredPosition = target.position + offset;
         transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * speed);
+        // transform.position = desiredPosition;
     }
 }
