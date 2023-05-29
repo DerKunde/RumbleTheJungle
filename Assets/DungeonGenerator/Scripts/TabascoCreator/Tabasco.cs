@@ -41,6 +41,34 @@ public class Tabasco : MonoBehaviour
 
     }
 
+    public List<(int x, int y, int roomType)> CreateCordsAndTypeList()
+    {
+        List<(int x, int y, int roomType)> roomList = new List<(int x, int y, int roomType)>();
+
+        roomList.Add((startPoint.Item1, startPoint.Item2, 1));
+        foreach (var roomCord in altarList)
+        {
+            roomList.Add((roomCord.Item1, roomCord.Item2, 4));
+        }
+
+        foreach (var roomCord in corridorList)
+        {
+            roomList.Add((roomCord.Item1, roomCord.Item2, 3));
+        }
+
+        foreach (var roomCord in bossList)
+        {
+            roomList.Add((roomCord.Item1, roomCord.Item2, 5));
+        }
+
+        foreach (var roomCord in exitList)
+        {
+            roomList.Add((roomCord.Item1, roomCord.Item2, 2));
+        }
+
+        return roomList;
+    }
+
     public int[,] CreateNewDungeon()
     {
         altarList.Clear();

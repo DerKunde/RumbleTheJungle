@@ -687,14 +687,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 928861140}
-  - component: {fileID: 928861141}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &928861140
 Transform:
   m_ObjectHideFlags: 0
@@ -717,18 +716,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &928861141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928861139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4979744cdde749144b489a9dffac6463, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1025371334 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8573215880685265433, guid: aa174469f3ebab54b9f8ac6e480a3028, type: 3}
@@ -751,7 +738,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097691192}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 0
@@ -935,6 +922,76 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8573215880685265433, guid: aa174469f3ebab54b9f8ac6e480a3028, type: 3}
   m_PrefabInstance: {fileID: 1368863917}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1513192996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1513192999}
+  - component: {fileID: 1513192998}
+  - component: {fileID: 1513192997}
+  m_Layer: 0
+  m_Name: DungeonManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1513192997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513192996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ee08f2b4c7ce0a4f808d1f726e51df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 10
+  height: 10
+  numberOfAltars: 2
+  numberOfBosses: 1
+  numberOfExits: 1
+--- !u!114 &1513192998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513192996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9ed1af807a19d4781f846e7b749c94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetX: 10
+  offsetY: 10
+  startRoomPrefab: {fileID: 1575854718349123348, guid: 2b9ba0d9f1114ae4f871b6e29ceb914b, type: 3}
+  exitRoomPrefab: {fileID: 1575854718349123348, guid: 2b9ba0d9f1114ae4f871b6e29ceb914b, type: 3}
+  corridorRoomPrefab: {fileID: 1575854718349123348, guid: 2b9ba0d9f1114ae4f871b6e29ceb914b, type: 3}
+  altarRoomPrefab: {fileID: 1575854718349123348, guid: 2b9ba0d9f1114ae4f871b6e29ceb914b, type: 3}
+  bossRoomPrefab: {fileID: 1575854718349123348, guid: 2b9ba0d9f1114ae4f871b6e29ceb914b, type: 3}
+  tabasco: {fileID: 1513192997}
+--- !u!4 &1513192999
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513192996}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1770734216
 GameObject:
   m_ObjectHideFlags: 0
