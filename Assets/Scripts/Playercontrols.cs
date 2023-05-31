@@ -29,17 +29,14 @@ public class Playercontrols : MonoBehaviour
         } 
     }
     public bool IsFacingRight { get => _isFacingRight;
-<<<<<<< Updated upstream
-        private set { 
-            if (_isFacingRight!=value)
-                transform.localScale *= new Vector2(-1, 1);
-=======
+
         private set
         {
             if (_isFacingRight != value)
+            {
                 //spriteRenderer.flipX = value;
                 onDirectionChanged?.Invoke(value);
->>>>>>> Stashed changes
+            }
             _isFacingRight = value;
         } 
     }
