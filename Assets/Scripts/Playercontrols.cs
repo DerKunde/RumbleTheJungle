@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -12,11 +13,12 @@ public class Playercontrols : MonoBehaviour
     Animator animator;
     Vector2 moveinput;
     public float Movementspeed = 10;
+    public UnityEvent<bool> onDirectionChanged;
     private bool _isFacingRight = true;
     private bool _isMoving = false;
     
     private Vector2 lastmoveinput;
-    public float dashspeed = 40;
+    public float dashspeed = 80;
     public Vector3 CurrentMove { 
         get
         {
@@ -27,9 +29,17 @@ public class Playercontrols : MonoBehaviour
         } 
     }
     public bool IsFacingRight { get => _isFacingRight;
+<<<<<<< Updated upstream
         private set { 
             if (_isFacingRight!=value)
                 transform.localScale *= new Vector2(-1, 1);
+=======
+        private set
+        {
+            if (_isFacingRight != value)
+                //spriteRenderer.flipX = value;
+                onDirectionChanged?.Invoke(value);
+>>>>>>> Stashed changes
             _isFacingRight = value;
         } 
     }
