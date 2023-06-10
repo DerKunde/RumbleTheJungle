@@ -955,8 +955,14 @@ MonoBehaviour:
   width: 10
   height: 10
   numberOfAltars: 2
+  altarMinDistanceToStart: 3
+  altarMaxDistanceToStart: 7
   numberOfBosses: 1
+  bossMinDistanceToStart: 5
+  bossMaxDistanceToStart: 9
   numberOfExits: 1
+  exitMinDistanceToStart: 5
+  exitMaxDistanceToStart: 9
 --- !u!114 &1513192998
 MonoBehaviour:
   m_ObjectHideFlags: 0

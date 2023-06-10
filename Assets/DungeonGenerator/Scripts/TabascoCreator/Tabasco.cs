@@ -8,10 +8,21 @@ public class Tabasco : MonoBehaviour
 {
     [Range(5, 20)] [SerializeField] private int width;
     [Range(5, 20)] [SerializeField] private int height;
-
+    
+    [Header ("Special Rooms Altar")]
     [SerializeField] private int numberOfAltars;
+    [SerializeField] private int altarMinDistanceToStart;
+    [SerializeField] private int altarMaxDistanceToStart;
+
+    [Header ("Special Rooms Boss")]
     [SerializeField] private int numberOfBosses;
+    [SerializeField] private int bossMinDistanceToStart;
+    [SerializeField] private int bossMaxDistanceToStart;
+    
+    [Header ("Special Rooms Exit")]
     [SerializeField] private int numberOfExits;
+    [SerializeField] private int exitMinDistanceToStart;
+    [SerializeField] private int exitMaxDistanceToStart;
 
 
     private int[,] grid;
@@ -36,7 +47,7 @@ public class Tabasco : MonoBehaviour
         markerList = new List<(int x, int y, int type)>();
         altarList = new List<(int x, int y)>();
         corridorList = new List<(int x, int y)>();
-        bossList = new List<(int, int)>();
+        bossList = new List<(int x, int y)>();
         exitList = new List<(int x, int y)>();
 
     }
@@ -66,7 +77,7 @@ public class Tabasco : MonoBehaviour
             roomList.Add((roomCord.Item1, roomCord.Item2, 2));
         }
 
-        return roomList;
+        return RemoveDuplicates(roomList);
     }
 
     public int[,] CreateNewDungeon()
@@ -299,21 +310,21 @@ public class Tabasco : MonoBehaviour
         
         for (int i = 1; i <= numberOfAltarRooms; i++)
         {
-            var tempPoint = GetRandomPointInRange(startPoint, 10, 2);
+            var tempPoint = GetRandomPointInRange(startPoint, altarMaxDistanceToStart, altarMinDistanceToStart);
             altarList.Add(tempPoint);
             markerList.Add((tempPoint.x, tempPoint.y, ALTAR_ROOM));
         }
 
         for (int i = 1; i <= numberOfBossRooms; i++)
         {
-            var tempPoint = GetRandomPointInRange(startPoint, 10, 2);
+            var tempPoint = GetRandomPointInRange(startPoint, bossMaxDistanceToStart, bossMinDistanceToStart);
             bossList.Add(tempPoint);
             markerList.Add((tempPoint.x, tempPoint.y, BOSS_ROOM));
         }
 
         for (int i = 1; i <= numberOfExitRooms; i++)
         {
-            var tempPoint = GetRandomPointInRange(startPoint, 10, 2);
+            var tempPoint = GetRandomPointInRange(startPoint, exitMaxDistanceToStart, exitMinDistanceToStart);
             exitList.Add(tempPoint);
             markerList.Add((tempPoint.x, tempPoint.y, EXIT_ROOM));
         }
@@ -391,5 +402,11 @@ public class Tabasco : MonoBehaviour
         int y = rand.Next(height);
 
         return (x, y);
+    }
+
+    private List<(int x, int y, int roomType)> RemoveDuplicates(List<(int x, int y, int roomType)> list)
+    {
+        HashSet<(int x, int y, int roomType)> set = new HashSet<(int x, int y, int roomType)>(list);
+        return new List<(int x, int y, int roomType)>(set);
     }
 }

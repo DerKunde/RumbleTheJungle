@@ -16,9 +16,16 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private GameObject altarRoomPrefab;
     [SerializeField] private GameObject bossRoomPrefab;
 
+    private List<GameObject> roomList;
+
     [SerializeField]
     private Tabasco tabasco;
     
+    private const int NORTH = 0;
+    private const int EAST = 1;
+    private const int SOUTH = 2;
+    private const int WEST = 3;
+
     public void SetDungeonLayout(int[,] grid)
     {
         dungeonLayout = grid;
@@ -56,16 +63,26 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    private void SpawnRoom(GameObject roomPrefab, (int, int) position)
+    private void SpawnRoom(GameObject roomPrefab, (int x, int y) position)
     {
-        Vector3 roomPosition = new Vector3((position.Item1 * offsetX), 0, (position.Item2 * offsetY));
+        Vector3 roomPosition = new Vector3((position.x * offsetX), 0, (position.y * offsetY));
         var spawnedRoom = 
             Instantiate(roomPrefab, roomPosition, Quaternion.identity, this.gameObject.transform);
+        
+        roomList.Add(spawnedRoom);
     }
 
     private void CheckPortalConnections()
     {
-        
+        /*
+         * Check in which direction must be placed portals
+         */
+    }
+
+    private bool HasNeighborInDirection(int direction, (int x, int y) coords)
+    {
+        //Check if Neighbor exists
+        return true;
     }
 
     private (int, int) FindStartRoom()
@@ -83,9 +100,4 @@ public class RoomManager : MonoBehaviour
 
         return (-1, -1);
     }
-    
-    
-    
-    
-    
 }
