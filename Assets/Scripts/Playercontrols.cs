@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -12,12 +13,12 @@ public class Playercontrols : MonoBehaviour
     Animator animator;
     Vector2 moveinput;
     public float Movementspeed = 10;
+    public UnityEvent<bool> onDirectionChanged;
     private bool _isFacingRight = true;
     private bool _isMoving = false;
-    [SerializeField] private SpriteRenderer spriteRenderer;
     
     private Vector2 lastmoveinput;
-    public float dashspeed = 40;
+    public float dashspeed = 80;
     public Vector3 CurrentMove { 
         get
         {
@@ -28,11 +29,15 @@ public class Playercontrols : MonoBehaviour
         } 
     }
     public bool IsFacingRight { get => _isFacingRight;
+
         private set
         {
             if (_isFacingRight != value)
-                spriteRenderer.flipX = value;
-                _isFacingRight = value;
+            {
+                //spriteRenderer.flipX = value;
+                onDirectionChanged?.Invoke(value);
+            }
+            _isFacingRight = value;
         } 
     }
 
@@ -107,21 +112,14 @@ public class Playercontrols : MonoBehaviour
 
     public void OnLightAttack(InputAction.CallbackContext ctx)
     {
-        if(ctx.started)
-        {
-            Debug.Log("Light Attack was clicked");
-            animator.SetTrigger("Light Attack");
-        }
-
+        Debug.Log("Light Attack was clicked");
+        animator.SetTrigger("Light Attack");
     }
 
     public void OnHeavyAttack(InputAction.CallbackContext ctx)
     {
-        if (ctx.started)
-        {
-            Debug.Log("Light Attack was clicked");
-            animator.SetTrigger("Heavy Attack");
-        }
+        Debug.Log("Heavy Attack was clicked");
+        animator.SetTrigger("Heavy Attack");
     }
 
 

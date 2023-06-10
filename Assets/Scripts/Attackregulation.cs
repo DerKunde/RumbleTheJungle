@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Attackregulation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int damage = 1;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        Damageable d = other.GetComponent<Damageable>();
+        d.Hit(damage);
+    }
+    
+    public void OnDirectionChanged(bool facingRight)
+    {
+        var position = transform.position;
+        position.x *= -1;
+        transform.position = position;
     }
 }
