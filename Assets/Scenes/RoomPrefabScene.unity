@@ -629,6 +629,59 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &867607513 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1476823797594679464, guid: 79c0cd6d80c73b44fa89d6cb0a30cece, type: 3}
+  m_PrefabInstance: {fileID: 1476823796700523958}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &867607519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867607513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b84a459b681c24591b54c08630acec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedScale: 1
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  Curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.5
+      inSlope: -1.5
+      outSlope: -1.5
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  startFadedOut: 0
 --- !u!1 &884255599
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,17 +1005,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee08f2b4c7ce0a4f808d1f726e51df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 10
-  height: 10
+  width: 13
+  height: 14
   numberOfAltars: 2
   altarMinDistanceToStart: 3
-  altarMaxDistanceToStart: 7
+  altarMaxDistanceToStart: 9
   numberOfBosses: 1
-  bossMinDistanceToStart: 5
-  bossMaxDistanceToStart: 9
+  bossMinDistanceToStart: 3
+  bossMaxDistanceToStart: 6
   numberOfExits: 1
-  exitMinDistanceToStart: 5
-  exitMaxDistanceToStart: 9
+  exitMinDistanceToStart: 6
+  exitMaxDistanceToStart: 6
 --- !u!114 &1513192998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -977,11 +1030,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetX: 10
   offsetY: 10
-  startRoomPrefab: {fileID: 1575854718349123348, guid: 2b9ba0d9f1114ae4f871b6e29ceb914b, type: 3}
-  exitRoomPrefab: {fileID: 1575854718349123348, guid: 2b9ba0d9f1114ae4f871b6e29ceb914b, type: 3}
-  corridorRoomPrefab: {fileID: 1575854718349123348, guid: 2b9ba0d9f1114ae4f871b6e29ceb914b, type: 3}
-  altarRoomPrefab: {fileID: 1575854718349123348, guid: 2b9ba0d9f1114ae4f871b6e29ceb914b, type: 3}
-  bossRoomPrefab: {fileID: 1575854718349123348, guid: 2b9ba0d9f1114ae4f871b6e29ceb914b, type: 3}
+  startRoomPrefab: {fileID: 5609739806339934362, guid: c63755fa88732454a9e35626bfb56fce, type: 3}
+  exitRoomPrefab: {fileID: 6374430745845827895, guid: f2ea13befd5d6f241a85123acd05dbb8, type: 3}
+  corridorRoomPrefab: {fileID: 7612158687865073457, guid: c88039304cfb0de48b0f311859dbe978, type: 3}
+  altarRoomPrefab: {fileID: 4933005390493608960, guid: 27aaaeebbe577894b881dd9b8cc90f78, type: 3}
+  bossRoomPrefab: {fileID: 7390284957336988879, guid: 7a153e5cd211f0945b1acbfdaa2dbbfc, type: 3}
   tabasco: {fileID: 1513192997}
 --- !u!4 &1513192999
 Transform:
@@ -1324,35 +1377,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1476823797594679445, guid: 79c0cd6d80c73b44fa89d6cb0a30cece, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.26071668
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1476823797594679445, guid: 79c0cd6d80c73b44fa89d6cb0a30cece, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.068099
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1476823797594679445, guid: 79c0cd6d80c73b44fa89d6cb0a30cece, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.774069
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 1476823797594679445, guid: 79c0cd6d80c73b44fa89d6cb0a30cece, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.93736506
+      value: 0.9396927
       objectReference: {fileID: 0}
     - target: {fileID: 1476823797594679445, guid: 79c0cd6d80c73b44fa89d6cb0a30cece, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.34834749
+      value: 0.3420201
       objectReference: {fileID: 0}
     - target: {fileID: 1476823797594679445, guid: 79c0cd6d80c73b44fa89d6cb0a30cece, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00085984904
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1476823797594679445, guid: 79c0cd6d80c73b44fa89d6cb0a30cece, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000275105
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1476823797594679445, guid: 79c0cd6d80c73b44fa89d6cb0a30cece, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1476823797594679445, guid: 79c0cd6d80c73b44fa89d6cb0a30cece, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y

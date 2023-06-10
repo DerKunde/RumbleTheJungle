@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1553136669436961330}
   - component: {fileID: 6317305099739306871}
   m_Layer: 0
-  m_Name: StartRoom
+  m_Name: StartRoomSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

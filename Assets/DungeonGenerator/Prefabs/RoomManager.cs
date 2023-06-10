@@ -7,8 +7,8 @@ public class RoomManager : MonoBehaviour
 {
     private int[,] dungeonLayout;
 
-    [SerializeField] private int offsetX = 5;
-    [SerializeField] private int offsetY = 5;
+    [SerializeField] private int offsetX = 10;
+    [SerializeField] private int offsetY = 10;
 
     [SerializeField] private GameObject startRoomPrefab;
     [SerializeField] private GameObject exitRoomPrefab;
@@ -16,7 +16,11 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private GameObject altarRoomPrefab;
     [SerializeField] private GameObject bossRoomPrefab;
 
-    private List<GameObject> roomList;
+    private List<(GameObject, (int x, int y))> roomList = new List<(GameObject, (int x, int y))>();
+    private List<(int x, int y, int roomType)> roomLayoutList = new List<(int x, int y, int roomType)>();
+
+    private List<(int x, int y, int roomType)> testLayout = new List<(int x, int y, int roomType)>();
+    
 
     [SerializeField]
     private Tabasco tabasco;
@@ -33,15 +37,27 @@ public class RoomManager : MonoBehaviour
 
     public void Start()
     {
+        testLayout = new List<(int x, int y, int roomType)>
+        {
+            (0,0,1),
+            (0,1,1),
+            (0,2,1),
+            (0,3,1),
+            (0,4,1),
+            (0,5,1),
+            (0,6,1)
+        };
+        
         SetupDungeon();
     }
 
     private void SetupDungeon()
     {
         tabasco.CreateNewDungeon();
-        var roomsToSpawn = tabasco.CreateCordsAndTypeList();
-
-        foreach (var room in roomsToSpawn)
+        roomLayoutList = tabasco.CreateCordsAndTypeList();
+        // roomLayoutList.AddRange(testLayout);
+        
+        foreach (var room in roomLayoutList)
         {
             switch (room.roomType)
             {
@@ -69,20 +85,68 @@ public class RoomManager : MonoBehaviour
         var spawnedRoom = 
             Instantiate(roomPrefab, roomPosition, Quaternion.identity, this.gameObject.transform);
         
-        roomList.Add(spawnedRoom);
+        CheckPortalConnections(spawnedRoom, position);
+        roomList.Add((spawnedRoom, position));
     }
 
-    private void CheckPortalConnections()
+    private void CheckPortalConnections(GameObject spawnedRoom, (int x, int y) position)
     {
-        /*
-         * Check in which direction must be placed portals
-         */
+        var dungeonRoom = spawnedRoom.GetComponent<DungeonRoom>();
+        
+        if (!HasNeighborRoom(position.x, position.y, Direction.North))
+        {
+            dungeonRoom.SetPortalState(Direction.North, false);
+        }
+
+        if (!HasNeighborRoom(position.x, position.y, Direction.East))
+        {
+            dungeonRoom.SetPortalState(Direction.East, false);
+        }
+
+        if (!HasNeighborRoom(position.x, position.y, Direction.South))
+        {
+            dungeonRoom.SetPortalState(Direction.South, false);
+        }
+
+        if (!HasNeighborRoom(position.x, position.y, Direction.West))
+        {
+            dungeonRoom.SetPortalState(Direction.West, false);
+        }
     }
 
-    private bool HasNeighborInDirection(int direction, (int x, int y) coords)
+    public bool HasNeighborRoom(int x, int y, Direction direction)
     {
-        //Check if Neighbor exists
-        return true;
+        // Ermittle die Koordinaten des Nachbarraums basierend auf der angegebenen Himmelsrichtung
+        int neighborX = x;
+        int neighborY = y;
+        switch (direction)
+        {
+            case Direction.North:
+                neighborY = y + 1;
+                break;
+            case Direction.South:
+                neighborY = y - 1;
+                break;
+            case Direction.East:
+                neighborX = x + 1;
+                break;
+            case Direction.West:
+                neighborX = x - 1;
+                break;
+        }
+
+        // Überprüfe, ob der Nachbarraum existiert und einen anderen Koordinatenwert hat als der aktuelle Raum
+        foreach (var roomObject in roomLayoutList)
+        {
+            (int x, int y) roomPostion = (roomObject.x, roomObject.y);
+            
+            if (roomPostion.x == neighborX && roomPostion.y == neighborY && (roomPostion.x != x || roomPostion.y != y))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private (int, int) FindStartRoom()
@@ -100,4 +164,13 @@ public class RoomManager : MonoBehaviour
 
         return (-1, -1);
     }
+    
+    public enum Direction
+    {
+        North,
+        East,
+        South,
+        West
+    }
 }
+

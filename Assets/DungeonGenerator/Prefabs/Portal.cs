@@ -5,8 +5,7 @@ public class Portal : MonoBehaviour
 {
     [SerializeField]
     private MeshRenderer renderer;
-
-    private bool portalActive = false;
+    
     
     // public Room targetRoom;
     
@@ -15,16 +14,21 @@ public class Portal : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             renderer.material.color = Color.red;
+            CameraFade.FadeOut();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        renderer.material.color = Color.green;
+        if (other.CompareTag("Player"))
+        {
+            renderer.material.color = Color.green;
+            CameraFade.FadeIn();
+        }
     }
 
-    public void TogglePortalState()
+    public void SetPortalState(bool state)
     {
-        portalActive = !portalActive;
+        this.gameObject.SetActive(state);
     }
 }

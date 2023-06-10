@@ -25,4 +25,9 @@ public class CameraMovement : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * speed);
         // transform.position = desiredPosition;
     }
+
+    public void TranstionToNextRoom(Vector3 roomTransformPostion)
+    {
+        transform.position = roomTransformPostion + offset;
+    }
 }

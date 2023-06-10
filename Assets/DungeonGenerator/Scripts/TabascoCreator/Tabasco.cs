@@ -305,7 +305,10 @@ public class Tabasco : MonoBehaviour
 
     private List<(int, int, int)> SetupMarkers(int numberOfAltarRooms, int numberOfBossRooms, int numberOfExitRooms)
     {
-        startPoint = SelectRandomPoint();
+        // startPoint = SelectRandomPoint();
+
+        startPoint = (1, 1);
+        
         markerList.Add((startPoint.Item1, startPoint.Item2, START_ROOM));
         
         for (int i = 1; i <= numberOfAltarRooms; i++)
