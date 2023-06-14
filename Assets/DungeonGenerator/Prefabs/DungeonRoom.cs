@@ -5,10 +5,12 @@ using UnityEngine;
 public class DungeonRoom : MonoBehaviour
 {
     [Header("Portals")]
-    [SerializeField] private Portal northPortal;
-    [SerializeField] private Portal eastPortal;
-    [SerializeField] private Portal southPortal;
-    [SerializeField] private Portal westPortal;
+    [SerializeField] public Portal northPortal;
+    [SerializeField] public Portal eastPortal;
+    [SerializeField] public Portal southPortal;
+    [SerializeField] public Portal westPortal;
+
+    public (int x, int y) roomPosition;
 
 
     public void SetPortalState(RoomManager.Direction direction, bool portalState)
@@ -17,21 +19,23 @@ public class DungeonRoom : MonoBehaviour
         {
             case RoomManager.Direction.North:
                 northPortal.SetPortalState(portalState);
+                northPortal.portalDirection = RoomManager.Direction.North;
                 break;
             
             case RoomManager.Direction.East:
                 eastPortal.SetPortalState(portalState);
+                eastPortal.portalDirection = RoomManager.Direction.East;
                 break;
             
             case RoomManager.Direction.South:
                 southPortal.SetPortalState(portalState);
+                southPortal.portalDirection = RoomManager.Direction.South;
                 break;
             
             case RoomManager.Direction.West:
                 westPortal.SetPortalState(portalState);
+                westPortal.portalDirection = RoomManager.Direction.West;
                 break;
         }
     }
-    
-    
 }

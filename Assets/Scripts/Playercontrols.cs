@@ -26,7 +26,7 @@ public class Playercontrols : MonoBehaviour
                 return new Vector3(moveinput.x * Movementspeed, rb.velocity.y, moveinput.y * Movementspeed);
             else
                 return new Vector3(lastmoveinput.x * dashspeed, rb.velocity.y, lastmoveinput.y * dashspeed);
-        } 
+        }
     }
     public bool IsFacingRight { get => _isFacingRight;
 
@@ -53,7 +53,8 @@ public class Playercontrols : MonoBehaviour
 
     public bool CanMove { get => animator.GetBool("CanMove"); private set => animator.SetBool("CanMove", value); }
     public float DashCooldown { get => animator.GetFloat("Cooldown"); private set => animator.SetFloat("Cooldown",value); }
-
+    
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -72,6 +73,7 @@ public class Playercontrols : MonoBehaviour
         {
             DashCooldown -= Time.deltaTime;
         }
+        // Debug.Log("PlayerPosition: " + this.transform.position);
     }
 
     private void FixedUpdate()

@@ -5,10 +5,18 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
+    public static RoomManager Instance { get; private set; }
+
+    public GameObject player;
+    public CameraMovement camera;
+
+    private List<Portal> portals;
+
+
     private int[,] dungeonLayout;
 
-    [SerializeField] private int offsetX = 10;
-    [SerializeField] private int offsetY = 10;
+    [SerializeField] private int offsetX = 100;
+    [SerializeField] private int offsetY = 100;
 
     [SerializeField] private GameObject startRoomPrefab;
     [SerializeField] private GameObject exitRoomPrefab;
@@ -30,6 +38,18 @@ public class RoomManager : MonoBehaviour
     private const int SOUTH = 2;
     private const int WEST = 3;
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
     public void SetDungeonLayout(int[,] grid)
     {
         dungeonLayout = grid;
@@ -49,6 +69,13 @@ public class RoomManager : MonoBehaviour
         };
         
         SetupDungeon();
+
+        portals = new List<Portal>();
+        Portal[] newPortal = FindObjectsOfType<Portal>();
+        foreach (var portal in newPortal)
+        {
+            AddPortalToList(portal);
+        }
     }
 
     private void SetupDungeon()
@@ -56,12 +83,15 @@ public class RoomManager : MonoBehaviour
         tabasco.CreateNewDungeon();
         roomLayoutList = tabasco.CreateCordsAndTypeList();
         // roomLayoutList.AddRange(testLayout);
+        (int x, int y) startRoomCords = (-1,-1);
+        
         
         foreach (var room in roomLayoutList)
         {
             switch (room.roomType)
             {
                 case 1: SpawnRoom(startRoomPrefab, (room.x, room.y));
+                    startRoomCords = (room.x, room.y);
                     break;
                 
                 case 2: SpawnRoom(exitRoomPrefab, (room.x, room.y));
@@ -77,6 +107,17 @@ public class RoomManager : MonoBehaviour
                     break;
             }
         }
+
+        foreach (var room in roomList)
+        {
+            if (room.Item2.x == startRoomCords.x && room.Item2.y == startRoomCords.y)
+            {
+                Instantiate(player, room.Item1.transform.position, Quaternion.identity, this.transform);
+                camera.SetupCamera();
+                return;
+            }
+        }
+        
     }
 
     private void SpawnRoom(GameObject roomPrefab, (int x, int y) position)
@@ -92,6 +133,7 @@ public class RoomManager : MonoBehaviour
     private void CheckPortalConnections(GameObject spawnedRoom, (int x, int y) position)
     {
         var dungeonRoom = spawnedRoom.GetComponent<DungeonRoom>();
+        dungeonRoom.roomPosition = position;
         
         if (!HasNeighborRoom(position.x, position.y, Direction.North))
         {
@@ -149,20 +191,74 @@ public class RoomManager : MonoBehaviour
         return false;
     }
 
-    private (int, int) FindStartRoom()
+    public void TransitionToNextRoom(Direction direction, (int x, int y) roomPosition)
     {
-        for (int x = 0; x < dungeonLayout.GetLength(0); x++)
+        int x = roomPosition.x;
+        int y = roomPosition.y;
+        int neighborX = x;
+        int neighborY = y;
+        switch (direction)
         {
-            for (int y = 0; y < dungeonLayout.GetLength(1); y++)
-            {
-                if (dungeonLayout[x, y] == 1)
-                {
-                    return (x, y);
-                }
-            }
+            case Direction.North:
+                neighborY = y + 1;
+                break;
+            case Direction.South:
+                neighborY = y - 1;
+                break;
+            case Direction.East:
+                neighborX = x + 1;
+                break;
+            case Direction.West:
+                neighborX = x - 1;
+                break;
         }
 
-        return (-1, -1);
+        GameObject roomToTransitionTo = null;
+        
+        foreach (var room in roomList)
+        {
+            if (room.Item2.x == neighborX && room.Item2.y == neighborY)
+            {
+                roomToTransitionTo = room.Item1;
+                break;
+            }
+        }
+        
+        //TODO: Das verschieben des Players scheint nicht zu funktionieren.
+        
+        if (roomToTransitionTo != null)
+        {
+            var dungeonRoom = roomToTransitionTo.GetComponent<DungeonRoom>();
+            switch (direction)
+            {
+                case Direction.North:
+                    player.transform.Translate(dungeonRoom.southPortal.spawnTransform.position, Space.World);
+                    break;
+                
+                case Direction.East:
+                    player.transform.Translate(dungeonRoom.westPortal.spawnTransform.position, Space.World);
+                    break;
+                
+                case Direction.South:
+                    player.transform.Translate(dungeonRoom.northPortal.spawnTransform.position, Space.World);
+                    break;
+                
+                case Direction.West:
+                    player.transform.Translate(dungeonRoom.eastPortal.spawnTransform.position, Space.World);
+                    break;
+            }
+            Debug.Log("Player moved");
+        }
+        else
+        {
+            Debug.Log("RoomManagerError: NO ROOM TO TRANSITION TO FOUND!");
+        }
+        
+    }
+
+    private void OnPortalEnterFunction((int x, int y) position, Direction direction)
+    {
+        TransitionToNextRoom(direction, position);
     }
     
     public enum Direction
@@ -171,6 +267,20 @@ public class RoomManager : MonoBehaviour
         East,
         South,
         West
+    }
+    
+    
+    void AddPortalToList(Portal portal)
+    {
+        portals.Add(portal);
+        portal.OnPortalEnter += OnPortalEnterFunction;
+    }
+
+// Entferne Portal-Instanzen aus der Liste (z.B. beim Zerstören eines Portals)
+    void RemovePortalFromList(Portal portal)
+    {
+        portals.Remove(portal);
+        portal.OnPortalEnter -= OnPortalEnterFunction;
     }
 }
 
