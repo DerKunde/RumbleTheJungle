@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class RoomManager : MonoBehaviour
 {
     public static RoomManager Instance { get; private set; }
 
-    public GameObject player;
+    public GameObject palyerPrefab;
+    private Transform playerTransfrom;
     public CameraMovement camera;
 
     private List<Portal> portals;
@@ -112,12 +114,12 @@ public class RoomManager : MonoBehaviour
         {
             if (room.Item2.x == startRoomCords.x && room.Item2.y == startRoomCords.y)
             {
-                Instantiate(player, room.Item1.transform.position, Quaternion.identity, this.transform);
+                var playerObject = Instantiate(palyerPrefab, room.Item1.transform.position, Quaternion.identity, this.transform);
+                playerTransfrom = playerObject.transform;
                 camera.SetupCamera();
                 return;
             }
         }
-        
     }
 
     private void SpawnRoom(GameObject roomPrefab, (int x, int y) position)
@@ -232,19 +234,19 @@ public class RoomManager : MonoBehaviour
             switch (direction)
             {
                 case Direction.North:
-                    player.transform.Translate(dungeonRoom.southPortal.spawnTransform.position, Space.World);
+                    playerTransfrom.position = dungeonRoom.southPortal.spawnTransform.position;
                     break;
                 
                 case Direction.East:
-                    player.transform.Translate(dungeonRoom.westPortal.spawnTransform.position, Space.World);
+                    playerTransfrom.position = dungeonRoom.westPortal.spawnTransform.position;
                     break;
                 
                 case Direction.South:
-                    player.transform.Translate(dungeonRoom.northPortal.spawnTransform.position, Space.World);
+                    playerTransfrom.position = dungeonRoom.northPortal.spawnTransform.position;
                     break;
                 
                 case Direction.West:
-                    player.transform.Translate(dungeonRoom.eastPortal.spawnTransform.position, Space.World);
+                    playerTransfrom.position = dungeonRoom.eastPortal.spawnTransform.position;
                     break;
             }
             Debug.Log("Player moved");
@@ -276,7 +278,7 @@ public class RoomManager : MonoBehaviour
         portal.OnPortalEnter += OnPortalEnterFunction;
     }
 
-// Entferne Portal-Instanzen aus der Liste (z.B. beim Zerstören eines Portals)
+    // Entferne Portal-Instanzen aus der Liste (z.B. beim Zerstören eines Portals)
     void RemovePortalFromList(Portal portal)
     {
         portals.Remove(portal);

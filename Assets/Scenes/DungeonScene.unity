@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9ed1af807a19d4781f846e7b749c94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4386817985307880911, guid: 6efe4a17a358a2d4bb9400cd3baa91eb, type: 3}
+  palyerPrefab: {fileID: 4386817985307880911, guid: 6efe4a17a358a2d4bb9400cd3baa91eb, type: 3}
   camera: {fileID: 867607521}
   offsetX: 200
   offsetY: 200
