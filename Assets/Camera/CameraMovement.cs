@@ -14,7 +14,15 @@ public class CameraMovement : MonoBehaviour
     private float speed = 2f;
 
     private bool cameraReady = false;
-    
+
+
+    private void Start()
+    {
+        if (target != null)
+        {
+            SetupCamera();
+        }
+    }
 
     private void LateUpdate()
     {

@@ -10,7 +10,7 @@ public class StartDungeonPortal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("RoomPrefabScene");
+            SceneManager.LoadScene("DungeonScene");
         }
     }
 }
