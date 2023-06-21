@@ -255,7 +255,8 @@ public class RoomManager : MonoBehaviour
         {
             Debug.Log("RoomManagerError: NO ROOM TO TRANSITION TO FOUND!");
         }
-        
+
+        StartCoroutine(DoFadeIn());
     }
 
     private void OnPortalEnterFunction((int x, int y) position, Direction direction)
@@ -283,6 +284,12 @@ public class RoomManager : MonoBehaviour
     {
         portals.Remove(portal);
         portal.OnPortalEnter -= OnPortalEnterFunction;
+    }
+
+    IEnumerator DoFadeIn()
+    {
+        yield return new WaitForSeconds(1.5f);
+        CameraFade.FadeIn();
     }
 }
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraFade : MonoBehaviour
 {
-    public float speedScale = 1f;
+    public static float speedScale = 1f;
 
     public Color fadeColor = Color.black;
 
