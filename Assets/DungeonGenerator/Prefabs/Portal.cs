@@ -11,7 +11,6 @@ public class Portal : MonoBehaviour
 
     private DungeonRoom dungeonRoom;
 
-    [HideInInspector]
     public RoomManager.Direction portalDirection;
     
     public delegate void TriggerEventHandler((int x, int y) position, RoomManager.Direction direction);
