@@ -10,6 +10,8 @@ public class DungeonRoom : MonoBehaviour
     [SerializeField] public Portal southPortal;
     [SerializeField] public Portal westPortal;
 
+    [SerializeField] private GameObject roomContent;
+
     public (int x, int y) roomPosition;
 
 
@@ -38,4 +40,15 @@ public class DungeonRoom : MonoBehaviour
                 break;
         }
     }
+
+    public void StartRoomContent()
+    {
+        roomContent.SetActive(true);
+    }
+
+    public void DisableRoomContent()
+    {
+        roomContent.SetActive(false);
+    }
+
 }

@@ -68,5 +68,6 @@ public class Portal : MonoBehaviour
         CameraFade.FadeOut();
         yield return new WaitForSeconds(CameraFade.speedScale * 2);
         OnPortalEnter?.Invoke(dungeonRoom.roomPosition, portalDirection);
+        dungeonRoom.DisableRoomContent();
     }
 }

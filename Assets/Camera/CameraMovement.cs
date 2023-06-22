@@ -14,6 +14,13 @@ public class CameraMovement : MonoBehaviour
     private float speed = 2f;
 
     private bool cameraReady = false;
+    public static CameraState cameraState;
+    
+    public enum CameraState
+    {
+        normalMode,
+        translationMode
+    }
 
 
     private void Start()
@@ -28,9 +35,21 @@ public class CameraMovement : MonoBehaviour
     {
         if (cameraReady)
         {
-            Vector3 desiredPosition = target.position + offset;
-            transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * speed);
-            // transform.position = desiredPosition;
+            switch (cameraState)
+            {
+                case CameraState.normalMode:
+                    Vector3 desiredPosition = target.position + offset;
+                    transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * speed);
+                    // transform.position = desiredPosition;
+                    break;
+                
+                case CameraState.translationMode:
+                    Vector3 desiredTranslation = target.position + offset;
+                    transform.position = Vector3.Lerp(transform.position, desiredTranslation, Time.deltaTime * 1000);
+                    // transform.position = desiredPosition;
+                    cameraState = CameraState.normalMode;
+                    break;
+            }
         }
     }
     

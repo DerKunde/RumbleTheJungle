@@ -250,13 +250,13 @@ public class RoomManager : MonoBehaviour
                     break;
             }
             Debug.Log("Player moved");
+            StartCoroutine(DoFadeIn());
+            dungeonRoom.StartRoomContent();
         }
         else
         {
             Debug.Log("RoomManagerError: NO ROOM TO TRANSITION TO FOUND!");
         }
-
-        StartCoroutine(DoFadeIn());
     }
 
     private void OnPortalEnterFunction((int x, int y) position, Direction direction)
@@ -288,7 +288,8 @@ public class RoomManager : MonoBehaviour
 
     IEnumerator DoFadeIn()
     {
-        yield return new WaitForSeconds(1.5f);
+        CameraMovement.cameraState = CameraMovement.CameraState.translationMode;
+        yield return new WaitForSeconds(0.2f);
         CameraFade.FadeIn();
     }
 }
