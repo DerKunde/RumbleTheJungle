@@ -599,6 +599,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0fb7d47cac134bc4bae3d78f66402162, type: 2}
+    - target: {fileID: 1539399038077549644, guid: 2b9ba0d9f1114ae4f871b6e29ceb914b, type: 3}
+      propertyPath: roomType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1575854718349123348, guid: 2b9ba0d9f1114ae4f871b6e29ceb914b, type: 3}
       propertyPath: m_Name
       value: AltarRoomPrefab

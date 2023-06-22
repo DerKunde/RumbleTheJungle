@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,10 +12,20 @@ public class DungeonRoom : MonoBehaviour
     [SerializeField] public Portal westPortal;
 
     [SerializeField] private GameObject roomContent;
+    [SerializeField]
+    private RoomType roomType;
 
     public (int x, int y) roomPosition;
 
-
+    public enum RoomType
+    {
+        startRoom,
+        corridorRoom,
+        altarRoom,
+        bossRoom,
+        exitRoom
+    }
+    
     public void SetPortalState(RoomManager.Direction direction, bool portalState)
     {
         switch (direction)
@@ -51,4 +62,10 @@ public class DungeonRoom : MonoBehaviour
         roomContent.SetActive(false);
     }
 
+    private void Start()
+    {
+        
+    }
+    
+    
 }
