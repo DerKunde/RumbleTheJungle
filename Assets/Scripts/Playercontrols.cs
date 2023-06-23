@@ -114,16 +114,43 @@ public class Playercontrols : MonoBehaviour
 
     public void OnLightAttack(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Light Attack was clicked");
-        animator.SetTrigger("Light Attack");
+        if (ctx.performed)
+        {
+            Debug.Log("Light Attack was clicked");
+            animator.SetTrigger("Light Attack");
+        }
+
     }
 
     public void OnHeavyAttack(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Heavy Attack was clicked");
-        animator.SetTrigger("Heavy Attack");
+        if (ctx.performed)
+        {
+            Debug.Log("Heavy Attack was clicked");
+            animator.SetTrigger("Heavy Attack");
+        }
     }
 
+    public void OnRangedAttack(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            Debug.Log("Ranged Attack was clicked");
+            animator.SetBool("Ranged Attack", true);
+        }
+
+        if (ctx.performed)
+        {
+            Debug.Log("Ranged Attack was held");
+            animator.SetBool("Charged", true);
+        }
+
+        if (ctx.canceled)
+        {
+            Debug.Log("Ranged Attack was released");
+            animator.SetBool("Ranged Attack", false);
+        }
+    }
 
     public void refreshfacingdirection()
     {

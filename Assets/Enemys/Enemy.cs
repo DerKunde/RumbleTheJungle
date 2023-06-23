@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent (typeof(Rigidbody2D))]
+[RequireComponent (typeof(Rigidbody))]
 public class Enemy : MonoBehaviour
 {
     public static event Action<Enemy> OnEnemyKilled;
@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     private Animator _animator;
 
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Rigidbody rb;
     [SerializeField] private NavMeshAgent navAgent;
     private Transform target;
     private Vector3 moveDirection;
