@@ -42,6 +42,7 @@ public class Damageable : MonoBehaviour
 
     private void Awake()
     {
+        Life = maxLife;
         animator = GetComponent<Animator>();
     }
     

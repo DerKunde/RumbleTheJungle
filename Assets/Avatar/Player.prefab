@@ -41,7 +41,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2297728410256345446}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.23, y: 3, z: 4.27}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 3945548742636798329}
   - component: {fileID: 3929445003940723405}
   - component: {fileID: 8119600606491500988}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -243,6 +243,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c7ad329c-59b7-4e3b-89a4-0757f1beb7a0
     m_ActionName: Player/Heavy Attack[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4257791961580746302}
+        m_TargetAssemblyTypeName: Playercontrols, Assembly-CSharp
+        m_MethodName: OnRangedAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3aedc14a-1319-4f4a-afc7-f8c5fc6464d3
+    m_ActionName: Player/Ranged attack[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

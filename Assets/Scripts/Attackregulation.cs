@@ -9,14 +9,17 @@ public class Attackregulation : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Damageable d = other.GetComponent<Damageable>();
-        d.Hit(damage);
+        if(other.TryGetComponent<Damageable>(out var d))
+        {
+            d.Hit(damage);
+        }
+
     }
     
     public void OnDirectionChanged(bool facingRight)
     {
-        var position = transform.position;
+        var position = transform.localPosition;
         position.x *= -1;
-        transform.position = position;
+        transform.localPosition = position;
     }
 }
