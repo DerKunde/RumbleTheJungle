@@ -117,6 +117,7 @@ public class RoomManager : MonoBehaviour
                 var playerObject = Instantiate(palyerPrefab, room.Item1.transform.position, Quaternion.identity, this.transform);
                 playerTransfrom = playerObject.transform;
                 camera.SetupCamera();
+                camera.setRoomReferenzPoint(room.Item1.GetComponent<DungeonRoom>());
                 return;
             }
         }
@@ -250,8 +251,10 @@ public class RoomManager : MonoBehaviour
                     break;
             }
             Debug.Log("Player moved");
+            camera.setRoomReferenzPoint(dungeonRoom);
             StartCoroutine(DoFadeIn());
             dungeonRoom.StartRoomContent();
+            // camera.SetRoomReferenzPoint(dungeonRoom);
         }
         else
         {

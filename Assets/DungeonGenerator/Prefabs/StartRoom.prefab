@@ -649,6 +649,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b9ba0d9f1114ae4f871b6e29ceb914b, type: 3}
+--- !u!64 &5155543374737722861 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 2273025094929119843, guid: 2b9ba0d9f1114ae4f871b6e29ceb914b, type: 3}
+  m_PrefabInstance: {fileID: 6343112429447165838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5609739805558543923 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1575854717248971197, guid: 2b9ba0d9f1114ae4f871b6e29ceb914b, type: 3}
+  m_PrefabInstance: {fileID: 6343112429447165838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1555129480240019749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609739805558543923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f1b00529365304487723fb58c94331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collider: {fileID: 5155543374737722861}
+  floorWidth: 0
+  floorHeight: 0
 --- !u!4 &5609739806704876307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1575854718244293789, guid: 2b9ba0d9f1114ae4f871b6e29ceb914b, type: 3}
