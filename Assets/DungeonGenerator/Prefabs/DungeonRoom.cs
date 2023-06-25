@@ -11,7 +11,7 @@ public class DungeonRoom : MonoBehaviour
     [SerializeField] public Portal southPortal;
     [SerializeField] public Portal westPortal;
 
-    [SerializeField] private GameObject roomContent;
+    [SerializeField] private RoomContentManager roomContent;
     [SerializeField]
     private RoomType roomType;
 
@@ -54,12 +54,12 @@ public class DungeonRoom : MonoBehaviour
 
     public void StartRoomContent()
     {
-        roomContent.SetActive(true);
+        roomContent.InitializeRoomContent(roomType);
     }
 
     public void DisableRoomContent()
     {
-        roomContent.SetActive(false);
+        roomContent.PausRoomContent();
     }
 
     private void Start()

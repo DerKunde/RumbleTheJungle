@@ -43,7 +43,7 @@ public class Portal : MonoBehaviour
 
             if (elapsedTime >= delayTime && playerInTrigger)
             {
-                StartCoroutine(DoFadint());
+                StartCoroutine(DoFadeIn());
                 playerInTrigger = false;
             }
         }
@@ -63,7 +63,7 @@ public class Portal : MonoBehaviour
         this.gameObject.SetActive(state);
     }
 
-    private IEnumerator DoFadint()
+    private IEnumerator DoFadeIn()
     {
         CameraFade.FadeOut();
         yield return new WaitForSeconds(CameraFade.speedScale * 2);
