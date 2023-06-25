@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DungeonRoom : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class DungeonRoom : MonoBehaviour
     private RoomType roomType;
 
     public (int x, int y) roomPosition;
+
+
+
+    [HideInInspector] public float roomDifficulty = 0.9f;
+    
 
     public enum RoomType
     {
@@ -52,8 +58,16 @@ public class DungeonRoom : MonoBehaviour
         }
     }
 
+    private void DetermineRoomDifficulty()
+    {
+        //TODO: Irgendwie so anbinden, das die roomDifficulty steigt, je näher der Raum am ExitRoom ist.
+        // roomDifficulty = Random.Range(0.01f, 0.99f);
+        roomDifficulty = 0.8f;
+    }
+    
     public void StartRoomContent()
     {
+        DetermineRoomDifficulty();
         roomContent.InitializeRoomContent(roomType);
     }
 

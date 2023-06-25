@@ -1006,6 +1006,7 @@ MonoBehaviour:
   westPortal: {fileID: 580526164825153244}
   roomContent: {fileID: 7930663229232778448}
   roomType: 0
+  roomDifficulty: 0.5
 --- !u!1 &2800560766967926290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,7 +1886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8607992568364943081, guid: e3d3884f0578051468a2ddee241f807c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8607992568364943081, guid: e3d3884f0578051468a2ddee241f807c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1951,10 +1952,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldParent: {fileID: 3382165482127750118}
   enemyParent: {fileID: 9082842553828228417}
+  piedraPrefab: {fileID: 6820199544211889790, guid: b674830fafc1b5341ae47d61f1832050, type: 3}
+  bushPrefab: {fileID: 60167957843684386, guid: a1d010e4d28545f4682c510f34f92995, type: 3}
   referencePoint: {fileID: 1575854718349123348}
   worldPropPrefabs:
   - {fileID: 7765992662841755234, guid: 1d3f3f5c3b886d04b9c04a1ada721619, type: 3}
-  enemySpawnpointPrefabs: []
+  enemySpawnpointPrefabs:
+  - {fileID: 911562795861066858, guid: 79169539d17f213468c0e495d6b7c430, type: 3}
 --- !u!1 &3382165482127750118 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4027565680353777253, guid: e3d3884f0578051468a2ddee241f807c, type: 3}
