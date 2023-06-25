@@ -34,8 +34,8 @@ public class Playercontrols : MonoBehaviour
         {
             if (_isFacingRight != value)
             {
-                //spriteRenderer.flipX = value;
-                onDirectionChanged?.Invoke(value);
+                //spriteRenderer.flipX = !value;
+                onDirectionChanged?.Invoke(!value);
             }
             _isFacingRight = value;
         } 
