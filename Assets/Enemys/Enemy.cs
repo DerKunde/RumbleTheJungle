@@ -9,7 +9,6 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     public static event Action<Enemy> OnEnemyKilled;
-    [SerializeField] private int health, maxHealth = 2;
     private Animator _animator;
 
     [SerializeField] private float moveSpeed = 5f;
@@ -25,7 +24,6 @@ public class Enemy : MonoBehaviour
     
     private void Start()
     {
-        health = maxHealth;
         target = GameObject.FindWithTag("Player").transform;
         _animator = GetComponent<Animator>();
         _animator.applyRootMotion = false;
@@ -46,16 +44,5 @@ public class Enemy : MonoBehaviour
         
     }
 
-    public void TakeDamage(int damageAmount)
-    {
-        // Debug.Log($"Damage Amount: {damageAmount}");
-        health -= damageAmount;
-        // Debug.Log($"{transform.name} Health: {health}");
-
-        if (health <= 0)
-        {
-            OnEnemyKilled?.Invoke(this);
-        }
-    }
     
 }

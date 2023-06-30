@@ -651,7 +651,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 411107168}
+  HubFloor: {fileID: 1147421629}
   speed: 2
+  paddingX: 2
+  paddingZ: 2
 --- !u!114 &1362929483
 MonoBehaviour:
   m_ObjectHideFlags: 0

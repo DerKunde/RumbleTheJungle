@@ -45,6 +45,6 @@ public class Damageable : MonoBehaviour
         Life = maxLife;
         animator = GetComponent<Animator>();
     }
-    
 
+    public void OnAfterDeath() => Destroy(gameObject);
 }

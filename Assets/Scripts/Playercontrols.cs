@@ -19,6 +19,23 @@ public class Playercontrols : MonoBehaviour
     
     private Vector2 lastmoveinput;
     public float dashspeed = 80;
+
+    public int Fury
+    {
+        get
+        {
+            return animator.GetInteger("Fury");
+        }
+        set
+        {
+            animator.SetInteger("Fury", value);
+        }
+    }
+
+    public void AddFury(int erhoehung)
+    {
+        Fury += erhoehung;
+    }
     public Vector3 CurrentMove { 
         get
         {
@@ -168,4 +185,6 @@ public class Playercontrols : MonoBehaviour
             IsFacingRight = false;
         }
     }
+
+
 }
