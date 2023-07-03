@@ -42,7 +42,9 @@ public class Playercontrols : MonoBehaviour
             if (CanMove)
                 return new Vector3(moveinput.x * Movementspeed, rb.velocity.y, moveinput.y * Movementspeed);
             else
+                if(!animator.GetBool("IsHitting"))
                 return new Vector3(lastmoveinput.x * dashspeed, rb.velocity.y, lastmoveinput.y * dashspeed);
+            return new Vector3(0, 0, 0);
         }
     }
     public bool IsFacingRight { get => _isFacingRight;
