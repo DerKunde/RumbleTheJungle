@@ -105,10 +105,10 @@ public class Playercontrols : MonoBehaviour
         moveinput = ctx.ReadValue<Vector2>();
         if (CanMove)
         {
-            SetFacingDirection(moveinput);
-            IsMoving = moveinput != Vector2.zero;
+            SetFacingDirection(moveinput);    
         }
 
+        IsMoving = moveinput != Vector2.zero;
     }
 
     public void OnDash(InputAction.CallbackContext ctx)
@@ -188,5 +188,9 @@ public class Playercontrols : MonoBehaviour
         }
     }
 
+    public void ControlOfDirecion()
+    {
+        SetFacingDirection(moveinput);
+    }
 
 }
