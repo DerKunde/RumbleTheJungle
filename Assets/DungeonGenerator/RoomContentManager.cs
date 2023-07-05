@@ -72,7 +72,6 @@ public class RoomContentManager : MonoBehaviour
         SpawnPropPrefab(worldPropPrefabs[(int)randomIndex]);
     }
     
-    
     private void InitializeAltarRoom()
     {
         var randomIndex = Random.Range(0f, worldPropPrefabs.Count-1);
@@ -103,9 +102,9 @@ public class RoomContentManager : MonoBehaviour
         var pattern = patternObject.GetComponent<EnemySpawnPoints>();
         pattern.SetupPoints();
         var numberOfPiedraToSpawn = DetermineNumberToSpawn(dungeonRoom.roomDifficulty, pattern.piedraSpawnPositions.Count);
-        var numberOfBushToSpawn = DetermineNumberToSpawn(dungeonRoom.roomDifficulty, pattern.bushSpawnPositions.Count);
+        // var numberOfBushToSpawn = DetermineNumberToSpawn(dungeonRoom.roomDifficulty, pattern.bushSpawnPositions.Count);
         SpawnEnemysOnPositions(numberOfPiedraToSpawn, pattern.piedraSpawnPositions, piedraPrefab);
-        SpawnEnemysOnPositions(numberOfBushToSpawn, pattern.bushSpawnPositions, bushPrefab);
+        // SpawnEnemysOnPositions(numberOfBushToSpawn, pattern.bushSpawnPositions, bushPrefab);
     }
 
     private int DetermineNumberToSpawn(float roomDifficulty,int maxCount)
