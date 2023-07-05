@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 /*
@@ -43,7 +44,7 @@ public class CameraMovement : MonoBehaviour
 
     private void Start()
     {
-        if (target != null)
+        if (target != null && SceneManager.GetActiveScene().name == "HubScene")
         {
             SetupCamera();
             setRoomReferenzPoint(HubFloor);
@@ -64,7 +65,6 @@ public class CameraMovement : MonoBehaviour
                     Vector3 desiredPosition = new Vector3(targetX, targetY, targetZ) + offset;
                     desiredPosition.Set(desiredPosition.x, transform.position.y, desiredPosition.z);
                     transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * speed);
-                    Debug.Log("DesiredCameraPos: " + desiredPosition);
                     break;
                 
                 case CameraState.translationMode:
