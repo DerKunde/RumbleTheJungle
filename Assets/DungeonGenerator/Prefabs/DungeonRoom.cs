@@ -19,6 +19,7 @@ public class DungeonRoom : MonoBehaviour
     [SerializeField]
     private RoomType roomType;
 
+    public Transform floor;
     public (int x, int y) roomPosition;
 
 

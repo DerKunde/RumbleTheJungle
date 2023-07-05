@@ -618,6 +618,7 @@ GameObject:
   - component: {fileID: 2273025094929119843}
   - component: {fileID: 5927536671554248424}
   - component: {fileID: 5957819814935096262}
+  - component: {fileID: 1751398342555476172}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -753,6 +754,21 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 3ab6f300b8107044b9b765947c6cbfe4, type: 2}
   m_BuildHeightMesh: 0
+--- !u!114 &1751398342555476172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575854717248971197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f1b00529365304487723fb58c94331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collider: {fileID: 2273025094929119843}
+  floorWidth: 0
+  floorHeight: 0
 --- !u!1 &1575854717542959142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,6 +1022,7 @@ MonoBehaviour:
   westPortal: {fileID: 580526164825153244}
   roomContent: {fileID: 7930663229232778448}
   roomType: 0
+  floor: {fileID: 1575854717248971193}
   roomDifficulty: 0.5
 --- !u!1 &2800560766967926290
 GameObject:
