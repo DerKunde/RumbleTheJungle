@@ -745,32 +745,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &-3048742149568747406
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: FernAttacke_Charge
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e2992dcf09acd664e9117cff3b5fe8d4, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &-2954603370876395624
 AnimatorState:
   serializedVersion: 6
@@ -1734,32 +1708,6 @@ MonoBehaviour:
   ValueOnEnter: 1
   ValueOnExit: 0
   boolname: CanMove
---- !u!1102 &6031399857054854025
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: FernAttacke_Finish
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 299a25544a2766742837fd97be1e210c, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1101 &6397180255382783523
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1921,32 +1869,6 @@ MonoBehaviour:
   ValueOnEnter: 1
   ValueOnExit: 0
   boolname: IsHitting
---- !u!1102 &8215865412269900738
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Combo_HH
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a95e29774a9051d49bef685b3bb24aac, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1101 &8443272125848216587
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -2051,15 +1973,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -2116480044397286196}
     m_Position: {x: 135, y: 315, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 8215865412269900738}
-    m_Position: {x: 170, y: 380, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -3048742149568747406}
-    m_Position: {x: 205, y: 445, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 6031399857054854025}
-    m_Position: {x: 240, y: 510, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 1461300364436829020}

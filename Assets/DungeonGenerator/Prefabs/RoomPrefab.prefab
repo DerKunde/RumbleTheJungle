@@ -1970,7 +1970,7 @@ MonoBehaviour:
   worldParent: {fileID: 3382165482127750118}
   enemyParent: {fileID: 9082842553828228417}
   piedraPrefab: {fileID: 6820199544211889790, guid: b674830fafc1b5341ae47d61f1832050, type: 3}
-  bushPrefab: {fileID: 60167957843684386, guid: a1d010e4d28545f4682c510f34f92995, type: 3}
+  bushPrefab: {fileID: 4094010078227200463, guid: 563d54cd1b2731e408b547f28cee8458, type: 3}
   referencePoint: {fileID: 1575854718349123348}
   worldPropPrefabs:
   - {fileID: 3783482826449132412, guid: 1e8d98d8d29e3ab458987332d0cdea1c, type: 3}
