@@ -6,9 +6,6 @@ using UnityEngine.UI;
 public class FuryBar : MonoBehaviour
 {
     public Slider furybar;
-    public Playercontrols player;
-
-
 
     private float CalculateSliderPercentage(float currentfury, float maxfury)
     {
@@ -19,11 +16,11 @@ public class FuryBar : MonoBehaviour
     {
         furybar.value = CalculateSliderPercentage(newfury,maxfury);
     }
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        OnPlayerFuryChanged(player.Fury, 100);
+        UiEvents.OnFuryChanged+=OnPlayerFuryChanged;
     }
+    // Start is called before the first frame update
 
     // Update is called once per frame
     void Update()

@@ -32,7 +32,7 @@ public class Playercontrols : MonoBehaviour
             var fury = Mathf.Max(value, 0);
             animator.SetInteger("Fury", fury);
             
-            furyChanged?.Invoke(fury, 100);
+            UiEvents.OnFuryChanged?.Invoke(fury, 100);
         }
     }
 
@@ -86,7 +86,7 @@ public class Playercontrols : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        UiEvents.OnFuryChanged?.Invoke(Fury, 100);
     }
 
     // Update is called once per frame
