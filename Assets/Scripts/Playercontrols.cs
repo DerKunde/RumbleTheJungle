@@ -19,6 +19,7 @@ public class Playercontrols : MonoBehaviour
     
     private Vector2 lastmoveinput;
     public float dashspeed = 80;
+    public UnityEvent<int, int> furyChanged;
 
     public int Fury
     {
@@ -28,7 +29,10 @@ public class Playercontrols : MonoBehaviour
         }
         set
         {
-            animator.SetInteger("Fury", value);
+            var fury = Mathf.Max(value, 0);
+            animator.SetInteger("Fury", fury);
+            
+            furyChanged?.Invoke(fury, 100);
         }
     }
 
@@ -152,22 +156,24 @@ public class Playercontrols : MonoBehaviour
 
     public void OnRangedAttack(InputAction.CallbackContext ctx)
     {
-        if (ctx.started)
+        if (ctx.started && Fury>=20)
         {
             Debug.Log("Ranged Attack was clicked");
             animator.SetBool("Ranged Attack", true);
         }
 
-        if (ctx.performed)
+        if (ctx.performed && Fury >= 40)
         {
             Debug.Log("Ranged Attack was held");
             animator.SetBool("Charged", true);
+            Fury -= 20;
         }
 
-        if (ctx.canceled)
+        if (ctx.canceled && Fury >= 20)
         {
             Debug.Log("Ranged Attack was released");
             animator.SetBool("Ranged Attack", false);
+            Fury -= 20;
         }
     }
 
