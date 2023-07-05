@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Dieses Skript definiert die Presets um verschiedene Gegner-Muster zu erzeugen.
+ */
 public class EnemySpawnPoints : MonoBehaviour
 {
 

@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
+/*
+ * Das Skript RoomContentManager bestimmt welcher Conten in den Raum geladen werden soll.
+ * Dazu hält dieses Skript verschiedene Presets die zufällig ausgewählt werden um das Dungeon dynamisch zu gestalten.
+ */
 public class RoomContentManager : MonoBehaviour
 {
     [SerializeField] private GameObject worldParent;
@@ -19,7 +23,9 @@ public class RoomContentManager : MonoBehaviour
 
     private DungeonRoom dungeonRoom;
 
-    
+    /*
+     * Wird vom jeweiligen Raum aufgerufen um zu bestimmen welcher Content in den Raum gesetzt wird.
+     */
     public void InitializeRoomContent(DungeonRoom.RoomType roomType)
     {
         dungeonRoom = this.GetComponentInParent<DungeonRoom>();
@@ -48,7 +54,7 @@ public class RoomContentManager : MonoBehaviour
         
         InitializeEnemys();
     }
-
+    
     public void PausRoomContent()
     {
         worldParent.SetActive(false);
@@ -56,28 +62,33 @@ public class RoomContentManager : MonoBehaviour
 
     private void InitializeStartRoom()
     {
-        SpawnPropPrefab(worldPropPrefabs[0]);
+        var randomIndex = Random.Range(0f, worldPropPrefabs.Count-1);
+        SpawnPropPrefab(worldPropPrefabs[(int)randomIndex]);
     }
     
     private void InitializeCorridorRoom()
     {
-        SpawnPropPrefab(worldPropPrefabs[0]);
+        var randomIndex = Random.Range(0f, worldPropPrefabs.Count-1);
+        SpawnPropPrefab(worldPropPrefabs[(int)randomIndex]);
     }
     
     
     private void InitializeAltarRoom()
     {
-        SpawnPropPrefab(worldPropPrefabs[0]);
+        var randomIndex = Random.Range(0f, worldPropPrefabs.Count-1);
+        SpawnPropPrefab(worldPropPrefabs[(int)randomIndex]);
     }
     
     private void InitializeBossRoom()
     {
-        SpawnPropPrefab(worldPropPrefabs[0]);
+        var randomIndex = Random.Range(0f, worldPropPrefabs.Count-1);
+        SpawnPropPrefab(worldPropPrefabs[(int)randomIndex]);
     }
     
     private void InitializeExitRoom()
     {
-        SpawnPropPrefab(worldPropPrefabs[0]);
+        var randomIndex = Random.Range(0f, worldPropPrefabs.Count-1);
+        SpawnPropPrefab(worldPropPrefabs[(int)randomIndex]);
     }
 
 
@@ -123,9 +134,6 @@ public class RoomContentManager : MonoBehaviour
         }
     }
     
-    
-    
-
     private GameObject DetermineEnemyPattern()
     {
         var objectToReturn = Instantiate(enemySpawnpointPrefabs[0], referencePoint.transform.position,

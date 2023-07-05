@@ -3,6 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Das Skirpt CameraMovement steuert die Kamera. Das beinhaltet die Bewegung der Kamer um dem Spieler zu folgen, als auch
+ * den FadeIn und FadeOut für den Raumübergang.
+ * Außerdem gibt es zwei Zustönde in der sich die Kamera befinden kann. Im NormalMode folgt die Kamera mit einer leichten
+ * Latenz dem Spieler. Im TranslationMode nimmt die Kamera unmittelbar die angeforderte Position ein.
+ */
 public class CameraMovement : MonoBehaviour
 {
     [SerializeField]

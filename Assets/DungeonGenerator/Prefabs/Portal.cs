@@ -2,6 +2,12 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+/*
+ * Das Portal Skript steuert das Verhalten eines Portals. Dazu gehört das auslösen des OnPortalEnter Events.
+ * Außerdem kann hier der Threshold eingestellt werden, welcher angibt wie lange der Spieler sich im Portal befinden
+ * muss um den Übergang in den nächsten Raum auszulösen.
+ */
+
 [RequireComponent(typeof(BoxCollider))]
 public class Portal : MonoBehaviour
 {

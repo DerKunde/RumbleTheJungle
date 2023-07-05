@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+/*
+ * Das Skript DungeonRoom steuert die Portale und den RoomContent
+ */
 public class DungeonRoom : MonoBehaviour
 {
     [Header("Portals")]
@@ -32,6 +35,10 @@ public class DungeonRoom : MonoBehaviour
         exitRoom
     }
     
+    /*
+     * Die Methode setzt den benötigten Portalzustand.
+     * Dazu muss die Richtung des anzusprenden Portals und der Status übergeben werden.
+     */
     public void SetPortalState(RoomManager.Direction direction, bool portalState)
     {
         switch (direction)
@@ -57,7 +64,11 @@ public class DungeonRoom : MonoBehaviour
                 break;
         }
     }
-
+    
+    /*
+     * WIP
+     * Bestimmt die Schwierigkeitsstuffe des Raumes
+     */
     private void DetermineRoomDifficulty()
     {
         //TODO: Irgendwie so anbinden, das die roomDifficulty steigt, je näher der Raum am ExitRoom ist.
@@ -65,21 +76,21 @@ public class DungeonRoom : MonoBehaviour
         roomDifficulty = 0.8f;
     }
     
+    /*
+     * Diese Methode startet den Content des Raumes.
+     * Dazu gehört Anzahl und Position der Gegener, sowie Props die den Raum gestalten.
+     */
     public void StartRoomContent()
     {
         DetermineRoomDifficulty();
         roomContent.InitializeRoomContent(roomType);
     }
-
+    
+    /*
+     * Wenn der Raum verlassen wird, wird der Content des Raumes wieder deaktiviert.
+     */
     public void DisableRoomContent()
     {
         roomContent.PausRoomContent();
     }
-
-    private void Start()
-    {
-        
-    }
-    
-    
 }

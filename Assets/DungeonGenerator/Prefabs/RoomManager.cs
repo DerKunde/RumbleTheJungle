@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+/**
+ * Das Skript RoomManager verarbeitet das Layout aus Tabasco.cs zu Dungeon Räumen.
+ * Desweiteren werden die Portale zu angeschlossenen Räumen gesetzt.
+ * Der Übergang ziwschen den Räumen wird ebenfalls in diesem Skript gesteuert.
+ */
 public class RoomManager : MonoBehaviour
 {
     public static RoomManager Instance { get; private set; }
@@ -51,12 +56,7 @@ public class RoomManager : MonoBehaviour
             Instance = this;
         }
     }
-
-    public void SetDungeonLayout(int[,] grid)
-    {
-        dungeonLayout = grid;
-    }
-
+    
     public void Start()
     {
         testLayout = new List<(int x, int y, int roomType)>
@@ -79,7 +79,10 @@ public class RoomManager : MonoBehaviour
             AddPortalToList(portal);
         }
     }
-
+    
+    /*
+     * Die Methode baut das Dungeon auf. Die roomLayoutList wird übesetzt in Prefabs die im 3D Raum platziert werden.
+     */
     private void SetupDungeon()
     {
         tabasco.CreateNewDungeon();
@@ -121,7 +124,11 @@ public class RoomManager : MonoBehaviour
             }
         }
     }
-
+    
+    /*
+     * Die Methode übernimmt alle notwendigen Schritte das Raum Prefab zu spawnen.
+     * Dazu gehört das geprüft wird zu welcher Seite der zu spawnende Raum ein Portal benötigt.
+     */
     private void SpawnRoom(GameObject roomPrefab, (int x, int y) position)
     {
         Vector3 roomPosition = new Vector3((position.x * offsetX), 0, (position.y * offsetY));
@@ -131,7 +138,10 @@ public class RoomManager : MonoBehaviour
         CheckPortalConnections(spawnedRoom, position);
         roomList.Add((spawnedRoom, position));
     }
-
+    
+    /*
+     * Diese Methode verarbeitet ob ein Portal in der entsprechenden Himmelsrichtung benötigt wird.
+     */
     private void CheckPortalConnections(GameObject spawnedRoom, (int x, int y) position)
     {
         var dungeonRoom = spawnedRoom.GetComponent<DungeonRoom>();
@@ -157,7 +167,11 @@ public class RoomManager : MonoBehaviour
             dungeonRoom.SetPortalState(Direction.West, false);
         }
     }
-
+    
+    /**
+     * Diese Mehthode Prüft ob es einen benachbarten Raum gibt.
+     * Dazu muss die Koordinate des Raumes und die zu prüfende Himmelsrichtung übergeben werden.
+     */
     public bool HasNeighborRoom(int x, int y, Direction direction)
     {
         // Ermittle die Koordinaten des Nachbarraums basierend auf der angegebenen Himmelsrichtung
@@ -192,7 +206,11 @@ public class RoomManager : MonoBehaviour
 
         return false;
     }
-
+    
+    /*
+     * Diese Methode wickelt den Übergang zwischen zwei Räumen ab.
+     * Dazu gehört das verschieben des Spielers und das steuern der Kamera.
+     */
     public void TransitionToNextRoom(Direction direction, (int x, int y) roomPosition)
     {
         int x = roomPosition.x;
@@ -226,8 +244,6 @@ public class RoomManager : MonoBehaviour
             }
         }
         
-        //TODO: Das verschieben des Players scheint nicht zu funktionieren.
-        
         if (roomToTransitionTo != null)
         {
             var dungeonRoom = roomToTransitionTo.GetComponent<DungeonRoom>();
@@ -258,7 +274,10 @@ public class RoomManager : MonoBehaviour
             Debug.Log("RoomManagerError: NO ROOM TO TRANSITION TO FOUND!");
         }
     }
-
+    
+    /*
+     * Dies ist eine Event-Function die ausgelöst wird sobald der Spieler ein Portal betritt.
+     */
     private void OnPortalEnterFunction((int x, int y) position, Direction direction)
     {
         TransitionToNextRoom(direction, position);

@@ -4,6 +4,12 @@ using System.Linq;
 using UnityEngine;
 using Random = System.Random;
 
+/*
+ * Tabasco generiert ein zufälliges Layout für ein Dungeon
+ * Dazu wird ein 2D Grid mit Höhe und Breite angelgt. Der Startpunkt wird festgelegt und alle Räume die besonderen Inhalt haben
+ * Altar Räume, Boss Räume und der Ausgang. Alle Variablen, wie Anzahl und Abstand zum Startpunkt können eingestellt werden.
+ * Anschließend werden alle Spezialräume miteinader verbunden.
+ */
 public class Tabasco : MonoBehaviour
 {
     [Range(5, 20)] [SerializeField] private int width;

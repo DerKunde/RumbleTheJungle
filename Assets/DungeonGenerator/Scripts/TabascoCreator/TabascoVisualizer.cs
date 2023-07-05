@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Das Skript bietet die Möglichkeit die generierten Layouts aus Tabasco anzuzeigen. Es ist sehr hilfreich um Tabasco
+ * zu debuggen und zu prüfen ob das gewünschte Verhalten erzeugt wird.
+ */
 public class TabascoVisualizer : MonoBehaviour
 {
     private const int START_ROOM = 1;
