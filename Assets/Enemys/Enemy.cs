@@ -8,13 +8,9 @@ using UnityEngine.AI;
 [RequireComponent (typeof(Rigidbody))]
 public class Enemy : MonoBehaviour
 {
-    public static event Action<Enemy> OnEnemyKilled;
     private Animator _animator;
-
-    [SerializeField] private Rigidbody rb;
     [SerializeField] private NavMeshAgent navAgent;
     private Transform target;
-    private Vector3 moveDirection;
     Animator animator;
     private float rangesave;
     public float AttackRange { 
