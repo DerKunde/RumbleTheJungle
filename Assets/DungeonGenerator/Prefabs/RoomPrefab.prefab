@@ -1973,7 +1973,8 @@ MonoBehaviour:
   bushPrefab: {fileID: 60167957843684386, guid: a1d010e4d28545f4682c510f34f92995, type: 3}
   referencePoint: {fileID: 1575854718349123348}
   worldPropPrefabs:
-  - {fileID: 7765992662841755234, guid: 1d3f3f5c3b886d04b9c04a1ada721619, type: 3}
+  - {fileID: 3783482826449132412, guid: 1e8d98d8d29e3ab458987332d0cdea1c, type: 3}
+  - {fileID: 8994892114941413054, guid: c39597aa06d0b6642a163ecb1bdd0ba0, type: 3}
   enemySpawnpointPrefabs:
   - {fileID: 911562795861066858, guid: 79169539d17f213468c0e495d6b7c430, type: 3}
 --- !u!1 &3382165482127750118 stripped
