@@ -1975,6 +1975,13 @@ MonoBehaviour:
   worldPropPrefabs:
   - {fileID: 3783482826449132412, guid: 1e8d98d8d29e3ab458987332d0cdea1c, type: 3}
   - {fileID: 8994892114941413054, guid: c39597aa06d0b6642a163ecb1bdd0ba0, type: 3}
+  - {fileID: 7421114799148164377, guid: ee8094b4e965c2c4a81a3f4c41783a58, type: 3}
+  - {fileID: 2815310980146198393, guid: 0faceb243e7b1af43b42974410815139, type: 3}
+  - {fileID: 833083984908829972, guid: 0a102cc250dfb1e49af4d1e78324ccad, type: 3}
+  - {fileID: 7421114799148164377, guid: ee8094b4e965c2c4a81a3f4c41783a58, type: 3}
+  - {fileID: 833083984908829972, guid: 0a102cc250dfb1e49af4d1e78324ccad, type: 3}
+  - {fileID: 833083984908829972, guid: 0a102cc250dfb1e49af4d1e78324ccad, type: 3}
+  - {fileID: 2815310980146198393, guid: 0faceb243e7b1af43b42974410815139, type: 3}
   enemySpawnpointPrefabs:
   - {fileID: 911562795861066858, guid: 79169539d17f213468c0e495d6b7c430, type: 3}
 --- !u!1 &3382165482127750118 stripped
