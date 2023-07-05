@@ -651,7 +651,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 411107168}
+  HubFloor: {fileID: 1147421629}
   speed: 2
+  paddingX: 2
+  paddingZ: 2
 --- !u!114 &1362929483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,6 +950,10 @@ PrefabInstance:
     - target: {fileID: 2557133360662028495, guid: 6efe4a17a358a2d4bb9400cd3baa91eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4257791961580746302, guid: 6efe4a17a358a2d4bb9400cd3baa91eb, type: 3}
+      propertyPath: dashspeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4386817985307880911, guid: 6efe4a17a358a2d4bb9400cd3baa91eb, type: 3}
       propertyPath: m_Name

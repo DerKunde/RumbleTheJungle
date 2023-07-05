@@ -234,7 +234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b84a459b681c24591b54c08630acec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedScale: 1
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
   Curve:
     serializedVersion: 2
@@ -305,7 +304,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884255599}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -571,6 +570,18 @@ PrefabInstance:
     - target: {fileID: 1476823797594679446, guid: 79c0cd6d80c73b44fa89d6cb0a30cece, type: 3}
       propertyPath: target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1476823797594679446, guid: 79c0cd6d80c73b44fa89d6cb0a30cece, type: 3}
+      propertyPath: padding
+      value: 71.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1476823797594679446, guid: 79c0cd6d80c73b44fa89d6cb0a30cece, type: 3}
+      propertyPath: paddingX
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 1476823797594679446, guid: 79c0cd6d80c73b44fa89d6cb0a30cece, type: 3}
+      propertyPath: paddingZ
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 1476823797594679464, guid: 79c0cd6d80c73b44fa89d6cb0a30cece, type: 3}
       propertyPath: m_Name

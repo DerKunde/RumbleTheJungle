@@ -19,13 +19,32 @@ public class Playercontrols : MonoBehaviour
     
     private Vector2 lastmoveinput;
     public float dashspeed = 80;
+
+    public int Fury
+    {
+        get
+        {
+            return animator.GetInteger("Fury");
+        }
+        set
+        {
+            animator.SetInteger("Fury", value);
+        }
+    }
+
+    public void AddFury(int erhoehung)
+    {
+        Fury += erhoehung;
+    }
     public Vector3 CurrentMove { 
         get
         {
             if (CanMove)
                 return new Vector3(moveinput.x * Movementspeed, rb.velocity.y, moveinput.y * Movementspeed);
             else
+                if(!animator.GetBool("IsHitting"))
                 return new Vector3(lastmoveinput.x * dashspeed, rb.velocity.y, lastmoveinput.y * dashspeed);
+            return new Vector3(0, 0, 0);
         }
     }
     public bool IsFacingRight { get => _isFacingRight;
@@ -34,8 +53,8 @@ public class Playercontrols : MonoBehaviour
         {
             if (_isFacingRight != value)
             {
-                //spriteRenderer.flipX = value;
-                onDirectionChanged?.Invoke(value);
+                //spriteRenderer.flipX = !value;
+                onDirectionChanged?.Invoke(!value);
             }
             _isFacingRight = value;
         } 
@@ -86,10 +105,10 @@ public class Playercontrols : MonoBehaviour
         moveinput = ctx.ReadValue<Vector2>();
         if (CanMove)
         {
-            SetFacingDirection(moveinput);
-            IsMoving = moveinput != Vector2.zero;
+            SetFacingDirection(moveinput);    
         }
 
+        IsMoving = moveinput != Vector2.zero;
     }
 
     public void OnDash(InputAction.CallbackContext ctx)
@@ -114,16 +133,43 @@ public class Playercontrols : MonoBehaviour
 
     public void OnLightAttack(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Light Attack was clicked");
-        animator.SetTrigger("Light Attack");
+        if (ctx.performed)
+        {
+            Debug.Log("Light Attack was clicked");
+            animator.SetTrigger("Light Attack");
+        }
+
     }
 
     public void OnHeavyAttack(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Heavy Attack was clicked");
-        animator.SetTrigger("Heavy Attack");
+        if (ctx.performed)
+        {
+            Debug.Log("Heavy Attack was clicked");
+            animator.SetTrigger("Heavy Attack");
+        }
     }
 
+    public void OnRangedAttack(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            Debug.Log("Ranged Attack was clicked");
+            animator.SetBool("Ranged Attack", true);
+        }
+
+        if (ctx.performed)
+        {
+            Debug.Log("Ranged Attack was held");
+            animator.SetBool("Charged", true);
+        }
+
+        if (ctx.canceled)
+        {
+            Debug.Log("Ranged Attack was released");
+            animator.SetBool("Ranged Attack", false);
+        }
+    }
 
     public void refreshfacingdirection()
     {
@@ -141,4 +187,10 @@ public class Playercontrols : MonoBehaviour
             IsFacingRight = false;
         }
     }
+
+    public void ControlOfDirecion()
+    {
+        SetFacingDirection(moveinput);
+    }
+
 }
