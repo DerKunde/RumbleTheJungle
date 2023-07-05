@@ -67,13 +67,11 @@ public class Vogel : MonoBehaviour
         isFrozen = true;
 
         // Start the coroutine to unfreeze the enemy after the freeze duration
-        StartCoroutine(UnfreezeEnemy());
+       Invoke("UnfreezeEnemy",freezeDuration);
     }
 
-    IEnumerator UnfreezeEnemy()
+    private void UnfreezeEnemy()
     {
-        // Wait for the freeze duration
-        yield return new WaitForSeconds(freezeDuration);
 
         // Enable enemy movement after the freeze duration
         navMeshAgent.isStopped = false;
