@@ -181,7 +181,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  dashspeed: 10
+  dashspeed: 80
   furyChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -342,6 +342,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e49ab09312d9f7b43b2933b52ddd2119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   maxLife: 6
 --- !u!1 &4989386319883918095
 GameObject:
