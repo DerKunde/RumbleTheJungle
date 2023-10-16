@@ -104,7 +104,7 @@ public class RoomContentManager : MonoBehaviour
         var numberOfPiedraToSpawn = DetermineNumberToSpawn(dungeonRoom.roomDifficulty, pattern.piedraSpawnPositions.Count);
         var numberOfBushToSpawn = DetermineNumberToSpawn(dungeonRoom.roomDifficulty, pattern.bushSpawnPositions.Count);
         SpawnEnemysOnPositions(numberOfPiedraToSpawn, pattern.piedraSpawnPositions, piedraPrefab);
-        SpawnEnemysOnPositions(numberOfBushToSpawn, pattern.bushSpawnPositions, bushPrefab);
+        // SpawnEnemysOnPositions(numberOfBushToSpawn, pattern.bushSpawnPositions, bushPrefab);
     }
 
     private int DetermineNumberToSpawn(float roomDifficulty,int maxCount)

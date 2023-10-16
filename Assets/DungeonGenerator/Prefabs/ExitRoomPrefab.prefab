@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: roomType
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1575854717248971197, guid: 2b9ba0d9f1114ae4f871b6e29ceb914b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1575854718349123348, guid: 2b9ba0d9f1114ae4f871b6e29ceb914b, type: 3}
       propertyPath: m_Name
       value: ExitRoomPrefab
